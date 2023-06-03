@@ -1,0 +1,9 @@
+query WorkLog($Id: Float!) {
+  workLog(id: $Id) {
+    id
+    title
+    description
+    startTime
+    endTime
+  }
+}

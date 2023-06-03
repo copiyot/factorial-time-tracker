@@ -1,0 +1,24 @@
+mutation EditWorkLog(
+  $Id: Float!
+  $title: String!
+  $description: String!
+  $startTime: DateTime!
+  $endTime: DateTime!
+) {
+  editWorkLog(
+    options: {
+      id: $Id
+      title: $title
+      description: $description
+      startTime: $startTime
+      endTime: $endTime
+    }
+  ) {
+    id
+    title
+    description
+    updatedAt
+    startTime
+    endTime
+  }
+}

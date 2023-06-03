@@ -1,0 +1,22 @@
+mutation CreateWorkLog(
+  $title: String!
+  $description: String!
+  $startTime: DateTime!
+  $endTime: DateTime!
+) {
+  createWorkLog(
+    options: {
+      title: $title
+      description: $description
+      startTime: $startTime
+      endTime: $endTime
+    }
+  ) {
+    id
+    title
+    description
+    updatedAt
+    startTime
+    endTime
+  }
+}

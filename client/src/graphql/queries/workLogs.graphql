@@ -1,0 +1,9 @@
+query WorkLogs {
+  workLogs {
+    id
+    title
+    description
+    startTime
+    endTime
+  }
+}
