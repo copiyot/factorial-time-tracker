@@ -1,12 +1,4 @@
-import {
-  Resolver,
-  Query,
-  Mutation,
-  Arg,
-  InputType,
-  Field,
-  //   Ctx,
-} from "type-graphql";
+import { Resolver, Query, Mutation, Arg, InputType, Field } from "type-graphql";
 
 import { WorkLog } from "../entity/WorkLog";
 
@@ -51,7 +43,7 @@ export class WorkLogResolver {
     return workLogs;
   }
 
-  @Query(() => WorkLog)
+  @Query(() => WorkLog, { nullable: true })
   async workLog(@Arg("id") id: number): Promise<WorkLog | null> {
     return await WorkLog.findOne({ where: { id } });
   }
@@ -100,7 +92,9 @@ export class WorkLogResolver {
       await WorkLog.update({ id }, { endTime });
     }
 
-    return workLogToEdit;
+    const editedWorkLog = await WorkLog.findOneBy({ id });
+
+    return editedWorkLog;
   }
 
   @Mutation(() => WorkLog, { nullable: true })
